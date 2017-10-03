@@ -7,7 +7,7 @@ FileParse::FileParse(const char **&argv)
     ifstream fileToSort(argv[1], ios::in);
     ofstream outputFile(argv[2], ios::out);
     if(!fileToSort){
-        cout << "Critical Erorr" << endl;
+        cout << "Critical Error" << endl;
     }
     while(!fileToSort.eof()){
 
@@ -25,10 +25,14 @@ FileParse::FileParse(const char **&argv)
         secondWordFlag = 1;
 
         }
+        int count = 0;
+        michaelString *arr = new michaelString[numWordsToSort];
         fileToSort.getline(buffer, 35);
         michaelString word(buffer);
         if(!word.empty()){
-        listToBeSorted.add(word);
+            arr[count] = word;
+            count++;
+            listToBeSorted.add(word);
         }
     }
 

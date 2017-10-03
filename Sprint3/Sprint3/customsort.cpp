@@ -17,8 +17,36 @@ void customSort::sort(michaelVector<michaelString> &toBeSorted, int counter){
                 swap( toBeSorted[counter],  toBeSorted[i]);
             }
         }
+    }
+    sort(toBeSorted, counter+1); //recursive call to repeat this function until end of array
+    }
+}
 
+void customSort::quickSortLength(michaelString arr[], int left, int right){
+    int i = left;
+    int j = right;
+    michaelString temp;
+    int pivot = arr[(left + right)/2].getLength();
+    while(i <= j){
+        while(arr[i].getLength() < pivot)
+            i++;
+        while(arr[j].getLength() > pivot)
+            j--;
+        if(i <= j){
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
     }
-    sort(toBeSorted,counter+1); //recursive call to repeat this function until end of array
-    }
+    if(left < j)
+        quickSortLength(arr, left, j);
+    if(i < right)
+        quickSortLength(arr, i, right);
+}
+
+int customSort::findMedian(michaelString arr[], int length){
+    int median = 0;
+    return median;
 }
